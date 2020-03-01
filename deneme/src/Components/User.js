@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../App.css';
 import axios from 'axios';
 import './User.css'
+import { Redirect, Link } from 'react-router-dom';
 
 class User extends Component {
     constructor(props) {
@@ -32,6 +33,14 @@ class User extends Component {
 
     }
 
+    onSubmitListUser = () => {
+
+        console.log("********************");
+        return <Redirect to={`/listuser/}`} />
+        console.log("********************");
+
+    }
+
     handleSubmit(event) {
 
         event.preventDefault();
@@ -50,10 +59,12 @@ class User extends Component {
         axios.post(url, body).then(response => {
             if (response.data == "OK") {
                 console.log("kayıt edildi");
-                /*             this.setState({
-                            isLogin: true,
-                            id:response.data})
-                            console.log(this.state.id); */
+                alert("Kayıt eklendi");
+                this.setState({
+                    barcodeName: '',
+                    barcodeCode:''
+                })
+                console.log(this.state.id);
 
             }
         })
@@ -134,6 +145,10 @@ class User extends Component {
                         <h2>
                             Kullanıcı sayısı: {this.state.userCount}
                         </h2>
+                        <Link to='/listuser'>
+                            <button >Kullanıcıları listele
+                        </button>
+                        </Link>
                     </div>
                     <br />
 
