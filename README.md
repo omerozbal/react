@@ -1,2 +1,3 @@
-# spring-react
+# reactProject
+
 Demo project
